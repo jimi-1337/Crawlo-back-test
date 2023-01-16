@@ -6,10 +6,10 @@ import * as request from 'supertest';
 import { User } from '../src/entities/user.entity';
 
 describe('UserController (e2e)', () => {
-        const authUrl = `http://localhost:3000`;
+        const authUrl = `http://localhost:5000`;
         const mockUser: User = {
-            username: "givenName8@mail.com",
-            password: "password",
+            username: "test4@mail.com",
+            password: "test",
         };
         // describe("/register (POST)", () => {
         //     it("it should register a user and return the new user object", () => {
@@ -32,10 +32,10 @@ describe('UserController (e2e)', () => {
 });
 
 describe('authController (e2e)', () => {
-    const authUrl = `http://localhost:3000`;
+    const authUrl = `http://localhost:5000`;
     const mockUser: User = {
-        username: "givenName8@mail.com",
-        password: "password",
+        username: "test4@mail.com",
+        password: "test",
     };
     describe("/auth/login (POST)", () => {
         it("it should register a user and return the new user object", () => {
@@ -55,10 +55,10 @@ describe('authController (e2e)', () => {
 
 describe('userController with authController (e2e)', () => {
     let token : string = "";
-    const authUrl = `http://localhost:3000`;
+    const authUrl = `http://localhost:5000`;
     const mockUser: User = {
-        username: "givenName8@mail.com",
-        password: "password",
+        username: "test4@mail.com",
+        password: "test",
     };
     beforeAll(async () => {
       const response = await request(authUrl)

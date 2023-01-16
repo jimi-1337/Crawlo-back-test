@@ -11,12 +11,12 @@ describe("CardController Unit Tests", () => {
     const ApiServiceProvider = {
         provide: CardService,
         useFactory: () => ({
-            getMovieByTitle: jest.fn(() => []),
-            getMovieById: jest.fn(() => []),
-            allMovies: jest.fn(() => { }),
-            createMovie: jest.fn(() => { }),
-            updateMovie: jest.fn(() => { }),
-            removeMovie: jest.fn(() => { })
+            getCardByTitle: jest.fn(() => []),
+            getCardById: jest.fn(() => []),
+            allCards: jest.fn(() => { }),
+            createCard: jest.fn(() => { }),
+            updateCard: jest.fn(() => { }),
+            removeCard: jest.fn(() => { })
         })
     }
     beforeEach(async () => {
@@ -30,7 +30,7 @@ describe("CardController Unit Tests", () => {
     it('ApiService - should be defined', () => {
         expect(spyService).toBeDefined();
       });
-    it("calling createMovie method", async () => {
+    it("calling createCard method", async () => {
         const CreateCardDto : CreateCardDto = {
             name : 'Portátil - 90NX02M4-M00420 ASUS, 11,6 ", HD, Mediatek M8173C (4 núcleos, 1MB Caché, hasta 2.1 GHz, 64 bit), 4 GB, 32 GB, Intel UHD Graphics integrada, Android Azul',
             url : 'https://www.mediamarkt.es/es/product/_porttil-90nx02m4-m00420-asus-116--mediate-95724012.html',
@@ -50,9 +50,9 @@ describe("CardController Unit Tests", () => {
             price : "200.52",
             availability : "Disponible online",
         }
-        expect(cardController.createMovie(CreateCardDto)).not.toEqual(null);
+        expect(cardController.createCard(CreateCardDto)).not.toEqual(null);
     })
-    it("calling createMovie method", async () => {
+    it("calling createCard method", async () => {
         const CreateCardDto : CreateCardDto = {
             name : 'Portátil - 90NX02M4-M00420 ASUS, 11,6 ", HD, Mediatek M8173C (4 núcleos, 1MB Caché, hasta 2.1 GHz, 64 bit), 4 GB, 32 GB, Intel UHD Graphics integrada, Android Azul',
             url : 'https://www.mediamarkt.es/es/product/_porttil-90nx02m4-m00420-asus-116--mediate-95724012.html',
@@ -72,15 +72,15 @@ describe("CardController Unit Tests", () => {
             price : "200.52",
             availability : "Disponible online",
         }
-        cardController.createMovie(CreateCardDto);
-        expect(spyService.createMovie).toHaveBeenCalled();
-        expect(spyService.createMovie).toHaveBeenCalledWith(CreateCardDto);
+        cardController.createCard(CreateCardDto);
+        expect(spyService.createCard).toHaveBeenCalled();
+        expect(spyService.createCard).toHaveBeenCalledWith(CreateCardDto);
     })
-    it("calling getAllMovies method", () => {
-        cardController.getAllMovies();
-        expect(spyService.allMovies).toHaveBeenCalled();
+    it("calling getAllCards method", () => {
+        cardController.getAllCards();
+        expect(spyService.allCards).toHaveBeenCalled();
     })
-    it("calling modifyMovie method", () => {
+    it("calling modifyCard method", () => {
         const id : string = 'jhdsfhds';
         const updateCardDto : UpdateCardDto = {
             name : 'Portátil - 90NX02M4-M00420 ASUS, 11,6 ", HD, Mediatek M8173C (4 núcleos, 1MB Caché, hasta 2.1 GHz, 64 bit), 4 GB, 32 GB, Intel UHD Graphics integrada, Android Azul',
@@ -101,14 +101,14 @@ describe("CardController Unit Tests", () => {
             price : "200.52",
             availability : "Disponible online",
         }
-        cardController.modifyMovie(id, updateCardDto);
-        expect(spyService.updateMovie).toHaveBeenCalled();
-        expect(spyService.updateMovie).toHaveBeenCalledWith(id, updateCardDto);
+        cardController.modifyCard(id, updateCardDto);
+        expect(spyService.updateCard).toHaveBeenCalled();
+        expect(spyService.updateCard).toHaveBeenCalledWith(id, updateCardDto);
     })
-    it("calling deleteMovie method", () => {
+    it("calling deleteCard method", () => {
         const id : string = 'jhdsfhds';
-        cardController.deleteMovie(id);
-        expect(spyService.removeMovie).toHaveBeenCalled();
-        expect(spyService.removeMovie).toHaveBeenCalledWith(id);
+        cardController.deleteCard(id);
+        expect(spyService.removeCard).toHaveBeenCalled();
+        expect(spyService.removeCard).toHaveBeenCalledWith(id);
     })
 })

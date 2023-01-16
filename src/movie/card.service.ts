@@ -23,46 +23,46 @@ export class CardService {
 
     constructor(@InjectModel(Card.name) private CardModel: Model < CardDocument >) {}
 
-    async getMovieByTitle(title: string) {
+    async getCardByTitle(title: string) {
         return this.CardModel.findOne({
             title
         })
         .exec();
     }
 
-    async getMovieById(id: string) {
+    async getCardById(id: string) {
         return this.CardModel.findById(id)
         .exec();
     }
 
-    async allMovies() {
+    async allCards() {
         return this.CardModel.find().exec();
     }
 
-    async createMovie(CreateCardDto: CreateCardDto) {
+    async createCard(CreateCardDto: CreateCardDto) {
         // validate DTO
-        const createMovie = new this.CardModel(CreateCardDto);
-        // check if movie exists
-        // const movie = await this.getMovieByTitle(createMovie.name);
-        // if (movie) {
+        const createCard = new this.CardModel(CreateCardDto);
+        // check if Card exists
+        // const Card = await this.getCardByTitle(createCard.name);
+        // if (Card) {
         //     throw new BadRequestException();
         // }
-        // createMovie.releaseDate = new Date(CreateCardDto.releaseDate);
-        return createMovie.save();
+        // createCard.releaseDate = new Date(CreateCardDto.releaseDate);
+        return createCard.save();
     }
 
-    async updateMovie(id: string, updateCardDto: UpdateCardDto) {
-        const movie = await this.getMovieByTitle(updateCardDto.name);
-        if (!movie) {
+    async updateCard(id: string, updateCardDto: UpdateCardDto) {
+        const Card = await this.getCardByTitle(updateCardDto.name);
+        if (!Card) {
             throw new BadRequestException();
         }
         // updateCardDto.releaseDate = new Date(updateCardDto.releaseDate);
         return this.CardModel.findByIdAndUpdate(id, updateCardDto);
     }
     
-    async removeMovie(id: string) {
-        const movie = await this.getMovieById(id);
-        if (!movie) {
+    async removeCard(id: string) {
+        const Card = await this.getCardById(id);
+        if (!Card) {
             throw new BadRequestException();
         }
         return this.CardModel.findByIdAndRemove(id);

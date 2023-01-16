@@ -21,33 +21,33 @@ let CardService = class CardService {
     constructor(CardModel) {
         this.CardModel = CardModel;
     }
-    async getMovieByTitle(title) {
+    async getCardByTitle(title) {
         return this.CardModel.findOne({
             title
         })
             .exec();
     }
-    async getMovieById(id) {
+    async getCardById(id) {
         return this.CardModel.findById(id)
             .exec();
     }
-    async allMovies() {
+    async allCards() {
         return this.CardModel.find().exec();
     }
-    async createMovie(CreateCardDto) {
-        const createMovie = new this.CardModel(CreateCardDto);
-        return createMovie.save();
+    async createCard(CreateCardDto) {
+        const createCard = new this.CardModel(CreateCardDto);
+        return createCard.save();
     }
-    async updateMovie(id, updateCardDto) {
-        const movie = await this.getMovieByTitle(updateCardDto.name);
-        if (!movie) {
+    async updateCard(id, updateCardDto) {
+        const Card = await this.getCardByTitle(updateCardDto.name);
+        if (!Card) {
             throw new common_1.BadRequestException();
         }
         return this.CardModel.findByIdAndUpdate(id, updateCardDto);
     }
-    async removeMovie(id) {
-        const movie = await this.getMovieById(id);
-        if (!movie) {
+    async removeCard(id) {
+        const Card = await this.getCardById(id);
+        if (!Card) {
             throw new common_1.BadRequestException();
         }
         return this.CardModel.findByIdAndRemove(id);

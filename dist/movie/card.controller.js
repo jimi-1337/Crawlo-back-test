@@ -23,19 +23,19 @@ let CardController = class CardController {
     constructor(CardService) {
         this.CardService = CardService;
     }
-    getAllMovies() {
-        return this.CardService.allMovies();
+    getAllCards() {
+        return this.CardService.allCards();
     }
-    createMovie(CreateCardDto) {
+    createCard(CreateCardDto) {
         if (CreateCardDto && Object.keys(CreateCardDto).length)
-            return this.CardService.createMovie(CreateCardDto);
+            return this.CardService.createCard(CreateCardDto);
         return null;
     }
-    modifyMovie(id, updateCardDto) {
-        return this.CardService.updateMovie(id, updateCardDto);
+    modifyCard(id, updateCardDto) {
+        return this.CardService.updateCard(id, updateCardDto);
     }
-    deleteMovie(id) {
-        return this.CardService.removeMovie(id);
+    deleteCard(id) {
+        return this.CardService.removeCard(id);
     }
 };
 __decorate([
@@ -43,7 +43,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], CardController.prototype, "getAllMovies", null);
+], CardController.prototype, "getAllCards", null);
 __decorate([
     (0, swagger_1.ApiBearerAuth)(),
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
@@ -52,7 +52,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_card_dto_1.CreateCardDto]),
     __metadata("design:returntype", void 0)
-], CardController.prototype, "createMovie", null);
+], CardController.prototype, "createCard", null);
 __decorate([
     (0, swagger_1.ApiBearerAuth)(),
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
@@ -62,7 +62,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, update_card_dto_1.UpdateCardDto]),
     __metadata("design:returntype", void 0)
-], CardController.prototype, "modifyMovie", null);
+], CardController.prototype, "modifyCard", null);
 __decorate([
     (0, swagger_1.ApiBearerAuth)(),
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
@@ -71,7 +71,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], CardController.prototype, "deleteMovie", null);
+], CardController.prototype, "deleteCard", null);
 CardController = __decorate([
     (0, common_1.Controller)('cards'),
     __metadata("design:paramtypes", [card_service_1.CardService])

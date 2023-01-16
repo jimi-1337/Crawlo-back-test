@@ -28,29 +28,29 @@ export class CardController {
 constructor(private readonly CardService: CardService) {}
 
     @Get()
-    getAllMovies() {
-        return this.CardService.allMovies();
+    getAllCards() {
+        return this.CardService.allCards();
     }
 
     @ApiBearerAuth()
     @UseGuards(AuthGuard('jwt'))
     @Post('/createCard')
-    createMovie(@Body() CreateCardDto: CreateCardDto) {
+    createCard(@Body() CreateCardDto: CreateCardDto) {
       if (CreateCardDto && Object.keys(CreateCardDto).length)
-        return this.CardService.createMovie(CreateCardDto);
+        return this.CardService.createCard(CreateCardDto);
       return null;
     }
     @ApiBearerAuth()
     @UseGuards(AuthGuard('jwt'))
     @Put('/modifyCard/:id')
-    modifyMovie(@Param('id') id: string, @Body() updateCardDto: UpdateCardDto) {
-      return this.CardService.updateMovie(id, updateCardDto);
+    modifyCard(@Param('id') id: string, @Body() updateCardDto: UpdateCardDto) {
+      return this.CardService.updateCard(id, updateCardDto);
     }
 
     @ApiBearerAuth()
     @UseGuards(AuthGuard('jwt'))
     @Delete('/deleteCard/:id')
-    deleteMovie(@Param('id') id: string,) {
-        return this.CardService.removeMovie(id);
+    deleteCard(@Param('id') id: string,) {
+        return this.CardService.removeCard(id);
     }
 }
