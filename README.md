@@ -25,10 +25,10 @@
 ## Description
 
 1. Create an authentication with JWT
-2. movie CRUD
+2. carrd CRUD
 3. Access management
-  - Public: Retrieve the list of films
-  - Private (auth): Creation / modification / deletion of a movie
+  - Public: Retrieve the list of cards
+  - Private (auth): Creation / modification / deletion of a cards
 
 ## Installation
 
@@ -68,6 +68,6 @@ Go to [MongoDB](https://www.mongodb.com/online) and Sign Up with your google or 
 
 ## Swager
 
-  - The link to swager is : http://localhost:3000/api.
+  - The link to swager is : http://localhost:5000/api.
   - For all the private routes, you will find in front of them an icon of a lock.
-  - All routes that need any cind of data you will find an exemple of the data needed in the route just click on it.
+  - All routes that need any kind of data you will find an exemple of the data needed in the route just click on it.
